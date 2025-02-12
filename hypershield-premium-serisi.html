@@ -28,33 +28,64 @@
 <body>
 
 	<!-- Start Header/Navigation -->
-	<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
-
-		<div class="container">
-			<a class="navbar-brand" href="index.html">
-				<img style="width: 200px;" src="img/logolar/hyper3.vektor.saydam.png" alt="logo">
-				</span></a>
-
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
-				aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarsFurni">
-				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-					<li><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-					<li class="nav-item active">
-						<a class="nav-link" href="urunlerimiz.html">Ürünlerimiz</a>
-					</li>
-			
-					<li><a class="nav-link" href="hakkimizda.html">Hakkımızda</a></li>
-					<li><a class="nav-link" href="iletisim.html">İletişim</a></li>
-				</ul>
-			
-			
+	<nav>
+	
+		<div class="nav-container">
+			<div class="nav-title">
+				<div class="profile-img">
+					<a href="/">
+							<img src="img/logolar/hyper3.vektor.saydam.png" alt="profile">
+						</a>
+				</div>
+	
+			</div>
+	
+			<div class="nav-link-container">
+				<div class="nav-links nav-link-settings">
+					<div class="nav-menu-header">
+						<div class="profile-img">
+							<a href="/">
+							<img src="img/logolar/hyper3.vektor.saydam.png" alt="profile">
+						</a>
+						</div>
+	
+					</div>
+					<div id="nth" class="nav-links-effect-container">
+	
+						<a href="/" class="nav-link" href="#">
+							<div class="link-anim-set">
+								<div class="link-anim-set-p p1">
+									<div class="link-numbers">01</div><span class="slash">//</span>Ana Sayfa
+								</div>
+							</div>
+						</a>
+						<a href="urunlerimiz.html" class="nav-link" href="#">
+							<div class="link-anim-set">
+								<div class="link-anim-set-p p2">
+									<div class="link-numbers">02</div><span class="slash">//</span>Ürünlerimiz
+								</div>
+							</div>
+						</a>
+						<a href="hakkimizda.html" class="nav-link" href="#">
+							<div class="link-anim-set">
+								<div class="link-anim-set-p p3">
+									<div class="link-numbers">03</div><span class="slash">//</span>Hakkımızda
+								</div>
+							</div>
+						</a>
+	
+	
+	
+					</div>
+					<div class="download-center">
+						<a href="iletisim.html" class="download-cv" href="#"><span class="download-text"><i
+									class="fa-solid fa-phone"></i>İletişim</span></a>
+					</div>
+	
+				</div>
+				<button class="menu-btn" href="#"><i class="fa-solid fa-bars"></i></button>
 			</div>
 		</div>
-
 	</nav>
 	<!-- End Header/Navigation -->
 
@@ -191,6 +222,7 @@
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/custom.js"></script>
+		<script src="js.js"></script>
 </body>
 
 </html>
