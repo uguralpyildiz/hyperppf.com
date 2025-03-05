@@ -188,7 +188,7 @@ a {
   .hero p {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.726);
-    margin-botom: 30px; }
+     }
   .hero .hero-img-wrap {
     
     position: relative;
@@ -431,7 +431,7 @@ a {
   .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[27];
+    -ms-grid-columns: (1fr);
     grid-template-columns: repeat(27, 1fr);
     position: relative; }
     .we-help-section .imgs-grid:before {
@@ -1660,3 +1660,119 @@ nav{
                                     opacity: 1;
                                   }
                                 }
+
+
+  	
+  
+  	
+  
+  	.result-container {
+  	  background-color: #fff;
+  	  color: #353535;
+  	  padding: 15px;
+  	  margin-top: 20px;
+  	  display: inline-block;
+      border-radius: 5px 5px 0 0;
+  	  text-align: left;
+      font-size: 14px;
+  	}
+    .result-container p{
+      color: #353535;
+      padding: 5px 15px;
+      font-size: 14px;
+    }
+    .result-container h5{
+      color: #353535;
+      padding: 15px;
+      
+    }
+    .result-container h3{
+      color: #353535 !important;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 15px;
+      font-style: italic;
+      border-left: 5px #333333 solid;
+      
+    }
+    .belge-logo{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      background: #353535;
+      color: #fff;
+      
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .belge-logo .ends {
+      
+      text-align: right !important;
+    }
+    .belge-logo img{
+      width: 220px;
+    }
+    
+    .download-pdf{
+      display: none;
+      align-items: center;
+      justify-content: end;
+      background: #fff;
+      padding: 10px;
+      border-radius: 0 0 5px 5px;
+    }
+    #garantiSonucdownload{
+      background: #fff;
+      width: 1300px;
+      height: 1600px;
+      
+    }
+
+    .iframefal{
+      height: 0.0001px;
+      overflow: auto;
+      
+    }
+   
+   .garanti-sorgulama-input{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #00000020;
+    width: 100%;
+   }
+         
+    .garanti-sorgulama-input h1{
+      color: #000;
+      font-size: 33px;
+      text-align: center;
+      margin-top: 15px;
+    }
+    .garanti-sorgulama-input h2{
+      color: #353535;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .garanti-sorgulama-input input,  .garanti-sorgulama-input button{
+      padding: 15px ;
+      border: none;
+      width:100%;
+      outline: none;
+      padding: 10px 15px !important;
+      border-radius: 50px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .garanti-sorgulama-input button{
+      background: #000;
+      color: #fff;
+      padding: 10px !important;
+      border-radius: 50px;
+    }
