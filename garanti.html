@@ -183,6 +183,11 @@
 										const garantiinput = document.querySelector(".garanti-sorgulama-input")
 										garantiinput.style.display = "none"
 										sonucDiv.innerHTML = `
+										<div class="loading-overlay">
+										<img class="pointend" src="img/logolar/hyper3.vektor.saydam.png" alt="logo">
+										</div>
+										
+
 											<div class="belge-logo">
 											<img src="img/logolar/hyper3.vektor.saydam.png" alt="profile">
 											<div class="ends">
@@ -293,12 +298,20 @@
 										`;
 										const pdfbutton = document.querySelector(".download-pdf")
 										pdfbutton.style.display = "flex"
+										const logosm = document.querySelector(".loading-overlay")
+										setTimeout(() => {
+											logosm.style.top = "-1500px";
+										}, 3000);
+										setTimeout(() => {
+											logosm.style.display = "none";
+										}, 3500);
 									} else {
 										sonucDiv.innerText = "Bu plakaya ait garanti verisi bulunamadı.";
 									}
 									sonucDiv.style.display = "block";
 								}
 							</script>
+							
 							
 </div>
 </div>
