@@ -149,18 +149,20 @@
 								}
 
 								function garantiSorgula() {
-									
-									let plaka = document.getElementById("garantiPlaka").value;
+									let plaka = document.getElementById("garantiPlaka").value.trim().replace(/\s/g, "").toLowerCase();
 									let sonucDiv = document.getElementById("garantiSonuc");
 									let sonucDivD = document.getElementById("garantiSonucdownload");
+
 									if (!plaka) {
 										sonucDiv.innerText = "Lütfen bu kısmı doldurun.";
 										sonucDiv.style.display = "block";
 										return;
 									}
 
-									// Plakaya göre verileri bulma
-									let sonuc = garantiVerileri.find(item => item.plaka === plaka);
+									// Normalize edilmiş plakaları karşılaştır
+									let sonuc = garantiVerileri.find(item => item.plaka.replace(/\s/g, "").toLowerCase() === plaka);
+
+
 									if (sonuc) {
 										// Tarihleri gün/ay/yıl formatına çevirme
 										let garantiTarihiArray = sonuc.garanti_tarihi.split('/');
