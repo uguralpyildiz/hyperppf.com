@@ -1,21 +1,21 @@
 [
   {
-    "plaka": "34ABC34",
+    "plaka": "34ABC132",
     "seri_numarasi": "JQLMNOOPRSTUVYZ",
-    "arac_model_bilgisi": "FORD MUSTANG 2025",
-    "garanti_tarihi": "16/05/2020",
-    "garanti_bitis_tarihi": "16/05/2025",
+    "arac_model_bilgisi": "Nissan falan",
+    "garanti_tarihi": "16/02/2024",
+    "garanti_bitis_tarihi": "16/02/2029",
     "aktiflik": "Devam Ediyor",
     "musteri_bilgileri": {
-      "plaka": "34ABC34",
+      "plaka": "34ABC132",
       "ad_soyad": "Ali Yılmaz",
-      "arac_marka_model": "FORD MUSTANG 2025"
+      "arac_marka_model": "Nissan falan"
     },
     "yapilan_islemler": {
-      "garanti_baslangic_tarihi": "16/05/2020",
-      "garanti_bitis_tarihi": "16/05/2025",
+      "garanti_baslangic_tarihi": "16/02/2024",
+      "garanti_bitis_tarihi": "16/02/2029",
       "dayaniklilik_suresi": "5 Yıl",
-      "islem": "Komple Kaplama",
+      "islem": "Komple kaplama",
       "urun_adi": "HyperShield 305"
     }
   }
