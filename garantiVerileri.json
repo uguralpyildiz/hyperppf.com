@@ -1,45 +1,5 @@
 [
   {
-    "plaka": "34ABC123",
-    "seri_numarasi": "JQLMNOOPRSTUVYZ",
-    "arac_model_bilgisi": "FORD MUSTANG 2020",
-    "garanti_tarihi": "16/05/2020",
-    "garanti_bitis_tarihi": "16/05/2025",
-    "aktiflik": "Devam Ediyor",
-    "musteri_bilgileri": {
-      "plaka": "34ABC123",
-      "ad_soyad": "Uğur Alp Yıldız",
-      "arac_marka_model": "FORD MUSTANG 2020"
-    },
-    "yapilan_islemler": {
-      "garanti_baslangic_tarihi": "16/05/2020",
-      "garanti_bitis_tarihi": "16/05/2025",
-      "dayaniklilik_suresi": "5 Yıl",
-      "islem": "Komple Kaplama",
-      "urun_adi": "HyperShield 305"
-    }
-  },
-  {
-    "plaka": "16ASM46",
-    "seri_numarasi": "6a5sd1f6as1d",
-    "arac_model_bilgisi": "Ford Focus 2021",
-    "garanti_tarihi": "16/12/2021",
-    "garanti_bitis_tarihi": "16/12/2026",
-    "aktiflik": "Devam Ediyor",
-    "musteri_bilgileri": {
-      "plaka": "Şimşek",
-      "ad_soyad": "Tansu",
-      "arac_marka_model": "Ford Focus 2021"
-    },
-    "yapilan_islemler": {
-      "garanti_baslangic_tarihi": "16/12/2021",
-      "garanti_bitis_tarihi": "16/12/2026",
-      "dayaniklilik_suresi": "5 Yıl",
-      "islem": "Komple Kaplama",
-      "urun_adi": "hypershield #4588"
-    }
-  },
-  {
     "plaka": "34MLR804",
     "seri_numarasi": "",
     "arac_model_bilgisi": "TESLA MODEL Y",
