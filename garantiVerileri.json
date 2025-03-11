@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "plaka": "34ABC34",
+    "seri_numarasi": "",
+    "arac_model_bilgisi": "",
+    "garanti_tarihi": "",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "",
+    "musteri_bilgileri": {
+      "plaka": "34ABC34",
+      "ad_soyad": "Ali Yılmaz",
+      "arac_marka_model": ""
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "",
+      "islem": "",
+      "urun_adi": ""
+    }
+  }
+]
