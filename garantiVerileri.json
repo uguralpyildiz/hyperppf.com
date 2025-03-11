@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "plaka": "34ABC123",
+    "seri_numarasi": "JQLMNOOPRSTUVYZ",
+    "arac_model_bilgisi": "FORD MUSTANG 2020",
+    "garanti_tarihi": "16/05/2020",
+    "garanti_bitis_tarihi": "16/05/2025",
+    "aktiflik": "Devam Ediyor",
+    "musteri_bilgileri": {
+      "plaka": "34ABC123",
+      "ad_soyad": "Uğur Alp Yıldız",
+      "arac_marka_model": "FORD MUSTANG 2020"
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "16/05/2020",
+      "garanti_bitis_tarihi": "16/05/2025",
+      "dayaniklilik_suresi": "5 Yıl",
+      "islem": "Komple Kaplama",
+      "urun_adi": "HyperShield 305"
+    }
+  }
+]
