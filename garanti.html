@@ -358,25 +358,39 @@
 
 <script>
 	async function indirmePDF() {
-		const { jsPDF } = window.jspdf || window.jspdf.jsPDF ? window.jspdf : window.jspdf.jsPDF;
-		const garantiDiv = document.getElementById('garantiSonucdownload');
+			const { jsPDF } = window.jspdf || window.jspdf.jsPDF ? window.jspdf : window.jspdf.jsPDF;
+			const garantiDiv = document.getElementById('garantiSonucdownload');
 
-		// Div'i 1300x1600 px boyutuna uygun şekilde canvas'a çevir
-		html2canvas(garantiDiv, { backgroundColor: null, scale: 1.5 }).then(canvas => {
-			const imgData = canvas.toDataURL('image/png');
+			// HTML'den canvas oluştur
+			html2canvas(garantiDiv, { backgroundColor: null, scale: 2 }).then(canvas => {
+				const imgData = canvas.toDataURL('image/png');
 
-			// PDF boyutu sabit olarak belirleniyor (1300x1600 px)
-			const pdf = new jsPDF({
-				orientation: 'portrait',
-				unit: 'px',
-				format: [1320, 1600]
+				// Orijinal resim boyutlarını al
+				const imgWidth = canvas.width;
+				const imgHeight = canvas.height;
+
+				// PDF boyutu (1320x1600 px)
+				const pdfWidth = 1000;
+				const pdfHeight = 1600;
+
+				// Oranları koruyarak resmi PDF içine sığdır
+				let ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+				let newWidth = imgWidth * ratio;
+				let newHeight = imgHeight * ratio;
+				let xOffset = (pdfWidth - newWidth) / 2;
+				let yOffset = (pdfHeight - newHeight) / 2;
+
+				const pdf = new jsPDF({
+					orientation: 'portrait',
+					unit: 'px',
+					format: [pdfWidth, pdfHeight]
+				});
+
+				pdf.addImage(imgData, 'PNG', xOffset, yOffset, newWidth, newHeight);
+				pdf.save('garanti-sorgu.pdf');
 			});
+		}
 
-			// Resmi PDF içerisine tam olarak oturt
-			pdf.addImage(imgData, 'PNG', 0, 0, 1320, 1600);
-			pdf.save('garanti-sorgu.pdf'); // PDF indir
-		});
-	}
 </script>
 						
 
