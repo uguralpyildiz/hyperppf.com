@@ -196,18 +196,25 @@
 											</div>
 											</div>
 											
-											<h3>Müşteri Bilgileri:</h3>
-											<p><strong>Ad Soyad:</strong> ${sonuc.musteri_bilgileri.ad_soyad}</p>
-											<p><strong>Plaka:</strong> ${sonuc.musteri_bilgileri.plaka}</p>
-											<p><strong>Araç Marka ve Modeli:</strong> ${sonuc.musteri_bilgileri.arac_marka_model}</p>
-											<hr>
-											<h3>Yapılan İşlemler:</h3>
-											<p><strong>Ürün Adı:</strong> ${sonuc.yapilan_islemler.urun_adi}</p>
-											<p><strong>Dayanıklılık Süresi:</strong> ${sonuc.yapilan_islemler.dayaniklilik_suresi}</p>
-											<p><strong>İşlem:</strong> ${sonuc.yapilan_islemler.islem}</p>
-											<p><strong>Garanti Durumu:</strong> ${sonuc.aktiflik}</p>
-											<p><strong>Garanti Başlangıç Tarihi:</strong> ${garantiTarihiFormatli}</p>
-											<p><strong>Garanti Bitiş Tarihi:</strong> ${garantiBitisTarihiFormatli}</p>
+											<div class="garanti-flex">
+												<div class="garanti-flex-ic">
+												<h3>Müşteri Bilgileri:</h3>
+												<p><strong>Ad Soyad:</strong> ${sonuc.musteri_bilgileri.ad_soyad}</p>
+												<p><strong>Plaka:</strong> ${sonuc.musteri_bilgileri.plaka}</p>
+												<p><strong>Araç Marka ve Modeli:</strong> ${sonuc.musteri_bilgileri.arac_marka_model}</p>
+												
+												</div>
+												<div class="garanti-flex-ic">
+												<h3>Yapılan İşlemler:</h3>
+												<p><strong>Ürün Adı:</strong> ${sonuc.yapilan_islemler.urun_adi}</p>
+												<p><strong>Dayanıklılık Süresi:</strong> ${sonuc.yapilan_islemler.dayaniklilik_suresi}</p>
+												<p><strong>İşlem:</strong> ${sonuc.yapilan_islemler.islem}</p>
+												<p><strong>Garanti Durumu:</strong> ${sonuc.aktiflik}</p>
+												<p><strong>Uygulama Yapılan Tarih:</strong> ${garantiTarihiFormatli}</p>
+												
+												</div>
+											</div>
+											<hr><br>
 											<h3>Bilgilendirme:</h3>
 											
 											<h5>Sayın Araç Sahibi,</h5>
@@ -261,19 +268,28 @@
 											
 											</div>
 											</div>
-											<h3>Müşteri Bilgileri:</h3>
-											<p><strong>Ad Soyad:</strong> ${sonuc.musteri_bilgileri.ad_soyad}</p>
-											<p><strong>Plaka:</strong> ${sonuc.musteri_bilgileri.plaka}</p>
-											<p><strong>Araç Marka ve Modeli:</strong> ${sonuc.musteri_bilgileri.arac_marka_model}</p>
-											<hr>
-											<h3>Yapılan İşlemler:</h3>
-											<p><strong>Ürün Adı:</strong> ${sonuc.yapilan_islemler.urun_adi}</p>
-											<p><strong>Dayanıklılık Süresi:</strong> ${sonuc.yapilan_islemler.dayaniklilik_suresi}</p>
-											<p><strong>İşlem:</strong> ${sonuc.yapilan_islemler.islem}</p>
-											<p><strong>Garanti Durumu:</strong> ${sonuc.aktiflik}</p>
-											<p><strong>Garanti Başlangıç Tarihi:</strong> ${garantiTarihiFormatli}</p>
-											<p><strong>Garanti Bitiş Tarihi:</strong> ${garantiBitisTarihiFormatli}</p>
+											
+											<div class="garanti-flexs">
+												<div class="garanti-flex-ic">
+												<h3>Müşteri Bilgileri:</h3>
+												<p><strong>Ad Soyad:</strong> ${sonuc.musteri_bilgileri.ad_soyad}</p>
+												<p><strong>Plaka:</strong> ${sonuc.musteri_bilgileri.plaka}</p>
+												<p><strong>Araç Marka ve Modeli:</strong> ${sonuc.musteri_bilgileri.arac_marka_model}</p>
+												
+												</div>
+												<div class="garanti-flex-ic">
+												<h3>Yapılan İşlemler:</h3>
+												<p><strong>Ürün Adı:</strong> ${sonuc.yapilan_islemler.urun_adi}</p>
+												<p><strong>Dayanıklılık Süresi:</strong> ${sonuc.yapilan_islemler.dayaniklilik_suresi}</p>
+												<p><strong>İşlem:</strong> ${sonuc.yapilan_islemler.islem}</p>
+												<p><strong>Garanti Durumu:</strong> ${sonuc.aktiflik}</p>
+												<p><strong>Uygulama Yapılan Tarih:</strong> ${garantiTarihiFormatli}</p>
+												
+												</div>
+											</div>
+											<hr><br>
 											<h3>Bilgilendirme:</h3>
+											
 											<h5>Sayın Araç Sahibi,</h5>
 
 											<p>Öncelikle, <strong>HyperShield boya koruma filmini</strong> tercih ettiğiniz için teşekkür ederiz. Aracınızı dış etkenlere karşı koruma altına alarak uzun ömürlü ve estetik bir görünüm sağlamak adına doğru bir seçim yaptınız.</p>
@@ -346,18 +362,18 @@
 		const garantiDiv = document.getElementById('garantiSonucdownload');
 
 		// Div'i 1300x1600 px boyutuna uygun şekilde canvas'a çevir
-		html2canvas(garantiDiv, { backgroundColor: null, scale: 2 }).then(canvas => {
+		html2canvas(garantiDiv, { backgroundColor: null, scale: 1.5 }).then(canvas => {
 			const imgData = canvas.toDataURL('image/png');
 
 			// PDF boyutu sabit olarak belirleniyor (1300x1600 px)
 			const pdf = new jsPDF({
 				orientation: 'portrait',
 				unit: 'px',
-				format: [1300, 1600]
+				format: [1320, 1600]
 			});
 
 			// Resmi PDF içerisine tam olarak oturt
-			pdf.addImage(imgData, 'PNG', 0, 0, 1300, 1600);
+			pdf.addImage(imgData, 'PNG', 0, 0, 1320, 1600);
 			pdf.save('garanti-sorgu.pdf'); // PDF indir
 		});
 	}

@@ -1718,6 +1718,7 @@ nav{
       border-radius: 5px 5px 0 0;
   	  text-align: left;
       font-size: 14px;
+      
   	}
     .result-container p{
       color: #353535;
@@ -1768,7 +1769,7 @@ nav{
     #garantiSonucdownload{
       background: #fff;
       width: 1300px;
-      height: 1600px;
+      height: 2090px;
       
     }
 
@@ -1954,4 +1955,36 @@ nav{
         
     }
 
-   
+   .garanti-flex{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    margin-bottom: 25px;
+    
+   }
+
+   @media screen and (max-width:600px) {
+    .garanti-flex {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        flex-wrap: wrap;
+        flex-direction: column;
+        flex-direction: row-reverse;
+        margin-bottom: 0;
+    
+      }
+    
+   }
+
+     .garanti-flexs {
+      display: flex;
+        align-items: start;
+        justify-content: space-between;
+        
+        flex-direction: row-reverse;
+        margin-bottom: 25px;
+       width: 1280px !important;
+     }
