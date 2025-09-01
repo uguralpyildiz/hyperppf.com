@@ -1,0 +1,505 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="img/logolar/hyper3.png">
+
+<meta name="description"
+	content="Hypershield PPF, ileri teknolojiye sahip poliüretan koruma filmi ile aracınızı çizilmelere, taş darbelerine ve çevresel etkilere karşı maksimum koruma altına alır. Sararma yapmaz, kendini onarır ve uzun ömürlüdür.">
+	<meta name="keywords"
+		content="Hypershield PPF, araç koruma filmi, poliüretan film, çizilmez kaplama, taş darbesi koruma, oto boya koruma, premium araç filmi, şeffaf koruma filmi, dayanıklı araç kaplaması">
+
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="css/tiny-slider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet">
+		<title>Garanti Sorgulama | Hypershield PPF - Üstün Araç Koruma Filmi</title>
+
+	</head>
+
+	<body>
+
+		<!-- Start Header/Navigation -->
+		<nav>
+		
+			<div class="nav-container">
+				<div class="nav-title">
+					<div class="profile-img">
+						<a href="/">
+							<img src="img/logolar/hyper3.vektor.saydam.png" alt="profile">
+						</a>
+					</div>
+		
+				</div>
+		
+				<div class="nav-link-container">
+					<div class="nav-links nav-link-settings">
+						<div class="nav-menu-header">
+							<div class="profile-img">
+								<a href="/">
+							<img src="img/logolar/hyper3.vektor.saydam.png" alt="profile">
+						</a>
+							</div>
+		
+						</div>
+						<div id="nth" class="nav-links-effect-container">
+		
+							<a href="/" class="nav-link">
+								<div class="link-anim-set">
+									<div class="link-anim-set-p p1">
+										<div class="link-numbers">01</div><span class="slash">//</span>Ana Sayfa
+									</div>
+								</div>
+							</a>
+							<a href="urunlerimiz.html" class="nav-link">
+								<div class="link-anim-set">
+									<div class="link-anim-set-p p2">
+										<div class="link-numbers">02</div><span class="slash">//</span>Ürünlerimiz
+									</div>
+								</div>
+							</a>
+							<a href="hakkimizda.html" class="nav-link">
+								<div class="link-anim-set">
+									<div class="link-anim-set-p p3">
+										<div class="link-numbers">03</div><span class="slash">//</span>Hakkımızda
+									</div>
+								</div>
+							</a>
+							<a href="iletisim.html" class="nav-link">
+								<div class="link-anim-set">
+									<div class="link-anim-set-p p3">
+										<div class="link-numbers">03</div><span class="slash">//</span>İletişim
+									</div>
+								</div>
+							</a>
+		
+		
+		
+						</div>
+						<div class="download-center">
+							<a href="garanti-sorgula.html" class="download-cv">Garanti Sorgula</span></a>
+						</div>
+						
+		
+					</div>
+					<button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
+				</div>
+			</div>
+		</nav>
+		<!-- End Header/Navigation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+		<div class="hero bg-re" style="padding-bottom: 0 !important;">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div >
+						<div>
+							
+		
+							
+		
+							<div id="garantiSorgula" class="sorgula-container">
+								
+								<div class="garanti-sorgulama-input">
+									
+										
+									
+										
+									<h1>Hoş Geldiniz</h1>
+									<h2>Garanti sorgulamak için lütfen gerekli alanları doldurunuz.</h2>
+									<input type="text" id="garantiPlaka" placeholder="PLAKA GİRİNİZ (ÖRN:34ABC123)">
+									<button onclick="garantiSorgula()">Garanti Sorgula</button>
+								</div>
+								<div id="garantiSonuc" class="result-container" style="display: none;"></div>
+								
+							</div>
+							<div class="download-pdf">
+								<button class="download-cv" onclick="indirmePDF()">PDF Olarak İndir</button>
+							</div>
+							
+							<script>
+								let garantiVerileri = [];
+
+								// JSON verisini çekme
+								fetch('garantiVerileri.json')
+									.then(response => response.json())
+									.then(data => garantiVerileri = data)
+									.catch(error => console.error('JSON verisi yüklenemedi:', error));
+
+								function openTab(evt, tabName) {
+									let tabContent = document.getElementsByClassName("tab-content");
+									for (let i = 0; i < tabContent.length; i++) {
+										tabContent[i].classList.remove("active");
+									}
+									let tabButtons = document.getElementsByClassName("tab")[0].getElementsByTagName("button");
+									for (let i = 0; i < tabButtons.length; i++) {
+										tabButtons[i].classList.remove("active");
+									}
+									document.getElementById(tabName).classList.add("active");
+									evt.currentTarget.classList.add("active");
+								}
+
+								function garantiSorgula() {
+									let plaka = document.getElementById("garantiPlaka").value.trim().replace(/\s/g, "").toLowerCase();
+									let sonucDiv = document.getElementById("garantiSonuc");
+									let sonucDivD = document.getElementById("garantiSonucdownload");
+
+									if (!plaka) {
+										sonucDiv.innerText = "Lütfen bu kısmı doldurun.";
+										sonucDiv.style.display = "block";
+										return;
+									}
+
+									// Normalize edilmiş plakaları karşılaştır
+									let sonuc = garantiVerileri.find(item => item.plaka.replace(/\s/g, "").toLowerCase() === plaka);
+
+
+									if (sonuc) {
+										// Tarihleri gün/ay/yıl formatına çevirme
+										let garantiTarihiArray = sonuc.garanti_tarihi.split('/');
+										let garantiTarihiFormatli = `${garantiTarihiArray[0]}-${garantiTarihiArray[1]}-${garantiTarihiArray[2]}`;
+
+										let garantiBitisTarihiArray = sonuc.garanti_bitis_tarihi.split('/');
+										let garantiBitisTarihiFormatli = `${garantiBitisTarihiArray[0]}-${garantiBitisTarihiArray[1]}-${garantiBitisTarihiArray[2]}`;
+
+										 const simdi = new Date();
+										const tarihSaatMetni = simdi.toLocaleString("tr-TR", {
+											day: "2-digit",
+											month: "2-digit",
+											year: "numeric",
+											hour: "2-digit",
+											minute: "2-digit"
+										}).replace(",", ""); // Virgülü kaldır
+										// Müşteri bilgilerini ve yapılan işlemleri ekleme
+										const garantiinput = document.querySelector(".garanti-sorgulama-input")
+										garantiinput.style.display = "none"
+										sonucDiv.innerHTML = `
+										<div class="loading-overlay">
+										<img class="pointend" src="img/logolar/hyper3.vektor.saydam.png" alt="logo">
+										</div>
+										
+
+											<div class="belge-logo">
+											<img src="img/logolar/hyper3.vektor.saydam.png" alt="profile">
+											<div class="ends">
+												<strong>Tarih</strong><br> ${tarihSaatMetni}
+											
+											</div>
+											</div>
+											
+											<div class="garanti-flex">
+												<div class="garanti-flex-ic">
+												<h3>Müşteri Bilgileri:</h3>
+												<p><strong>Ad Soyad:</strong> ${sonuc.musteri_bilgileri.ad_soyad}</p>
+												<p><strong>Plaka:</strong> ${sonuc.musteri_bilgileri.plaka}</p>
+												<p><strong>Araç Marka ve Modeli:</strong> ${sonuc.musteri_bilgileri.arac_marka_model}</p>
+												
+												</div>
+												<div class="garanti-flex-ic">
+												<h3>Yapılan İşlemler:</h3>
+												<p><strong>Ürün Adı:</strong> ${sonuc.yapilan_islemler.urun_adi}</p>
+												<p><strong>Dayanıklılık Süresi:</strong> ${sonuc.yapilan_islemler.dayaniklilik_suresi}</p>
+												<p><strong>İşlem:</strong> ${sonuc.yapilan_islemler.islem}</p>
+												<p><strong>Garanti Durumu:</strong> ${sonuc.aktiflik}</p>
+												<p><strong>Uygulama Yapılan Tarih:</strong> ${garantiTarihiFormatli}</p>
+												
+												</div>
+											</div>
+											<hr><br>
+											<h3>Bilgilendirme:</h3>
+											
+											<h5>Sayın Araç Sahibi,</h5>
+
+											<p>Öncelikle, <strong>HyperShield boya koruma filmini</strong> tercih ettiğiniz için teşekkür ederiz. Aracınızı dış etkenlere karşı koruma altına alarak uzun ömürlü ve estetik bir görünüm sağlamak adına doğru bir seçim yaptınız.</p>
+
+											<p><strong>HyperShield PPF</strong>, yüksek parlaklık, dayanıklılık ve gelişmiş kendini onarma teknolojisi ile aracınızın yüzeyini çizilmelere, çevresel faktörlere ve yol koşullarına karşı korur. Günlük kullanımda oluşabilecek hafif çizikler, ısı ile aktive olan yüzey sayesinde zamanla kaybolur ve aracınız her zaman ilk günkü gibi kalır.</p>
+
+											<h5>Garanti Kapsamı</h5>
+											<p><strong>HyperShield</strong> koruma filmi, yalnızca orijinal fabrika çıkışlı boyalar için garanti kapsamındadır.</p>
+
+											<h5>İlk 7 Gün: Yerleşim Süreci</h5>
+											<p>Koruma filminin yüzeye tam olarak oturması için ilk bir hafta kritik bir süreçtir. Bu dönemde filmin yapışma süreci devam ettiğinden, bazı noktalara özellikle dikkat edilmelidir:</p>
+
+											<ul>
+												<li><strong>Yıkama ve su teması:</strong> İlk 7 gün boyunca aracı yıkamamaya özen gösterin. Aşırı su teması, filmin tam yerleşme sürecini etkileyebilir.</li>
+												<li><strong>Basınçlı su ve buhar uygulamalarından kaçının:</strong> Filmin kenarlarının tam oturması için bu süreçte yüksek basınçlı su veya buharlı temizlik yapılmamalıdır.</li>
+												<li><strong>Koruma sürecini tamamlamak için:</strong> Aracınızı sert hava koşullarına maruz bırakmamaya çalışın. Aşırı sıcak, yağmur veya çamurlu yollar, filmin yerleşme sürecini olumsuz etkileyebilir.</li>
+											</ul>
+
+											<h5>Temizlik ve Bakım Önerileri</h5>
+											<ul>
+												<li><strong>Aracınızı uzun süre kirli bırakmamaya özen gösterin:</strong> Özellikle sıcak havalarda yüzeyde biriken kirler temizlenmezse film üzerinde kalıcı lekeler oluşturabilir.</li>
+												<li><strong>Kireçli su kullanımına dikkat edin:</strong> Kireçli suyun buharlaşması sonucu oluşan lekeler film yüzeyinde iz bırakabilir. Özellikle sıcak günlerde suyun yüzeyde kurumasına izin vermemeye dikkat edin.</li>
+											</ul>
+
+											<h5>Yıkama Talimatları</h5>
+											<ul>
+												<li><strong>Basınçlı su kullanımına dikkat edin:</strong> Yüksek basınç, filmin kenarlarında kalkmalara sebep olabilir. Orta seviyede basınç kullanarak suyu doğrudan film kenarlarına yönlendirmekten kaçının.</li>
+												<li><strong>Sıcak yüzeylere yıkama yapmayın:</strong> Aracınızı güneş altında veya sıcak panellerde yıkamayın. Mümkünse gölgede yıkama yapın veya yüzeyin soğumasını bekleyin.</li>
+												<li><strong>Doğru temizlik ürünlerini kullanın:</strong> Aşındırıcı kimyasallar, asidik temizleyiciler veya sert süngerlerden kaçının. pH dengeli şampuanlar ve mikrofiber bezler en iyi sonucu verecektir.</li>
+											</ul>
+
+											<h5>Uzun Ömürlü Koruma İçin Doğru Bakım</h5>
+											<p><strong>HyperShield PPF</strong>, doğru bakım ve özenli kullanım ile aracınızı uzun yıllar ilk günkü gibi korumanıza yardımcı olur. Belirtilen talimatlara uyarak, aracınızın değerini en iyi şekilde muhafaza edebilirsiniz.</p>
+
+											<p>Herhangi bir sorunuz olması durumunda bizimle iletişime geçebilirsiniz.</p>
+
+											<p><strong>Güvenli ve keyifli sürüşler dileriz!</strong></p>
+
+											<p><strong>HyperShield</strong></p>
+											
+										`;
+
+										// Müşteri bilgilerini ve yapılan işlemleri ekleme
+										sonucDivD.innerHTML = `
+											<div class="belge-logo">
+											<img src="img/logolar/hyper3.vektor.saydam.png" alt="profile">
+											<div class="ends">
+												<strong>Tarih</strong><br> ${tarihSaatMetni}
+											
+											</div>
+											</div>
+											
+											<div class="garanti-flexs">
+												<div class="garanti-flex-ic">
+												<h3>Müşteri Bilgileri:</h3>
+												<p><strong>Ad Soyad:</strong> ${sonuc.musteri_bilgileri.ad_soyad}</p>
+												<p><strong>Plaka:</strong> ${sonuc.musteri_bilgileri.plaka}</p>
+												<p><strong>Araç Marka ve Modeli:</strong> ${sonuc.musteri_bilgileri.arac_marka_model}</p>
+												
+												</div>
+												<div class="garanti-flex-ic">
+												<h3>Yapılan İşlemler:</h3>
+												<p><strong>Ürün Adı:</strong> ${sonuc.yapilan_islemler.urun_adi}</p>
+												<p><strong>Dayanıklılık Süresi:</strong> ${sonuc.yapilan_islemler.dayaniklilik_suresi}</p>
+												<p><strong>İşlem:</strong> ${sonuc.yapilan_islemler.islem}</p>
+												<p><strong>Garanti Durumu:</strong> ${sonuc.aktiflik}</p>
+												<p><strong>Uygulama Yapılan Tarih:</strong> ${garantiTarihiFormatli}</p>
+												
+												</div>
+											</div>
+											<hr><br>
+											<h3>Bilgilendirme:</h3>
+											
+											<h5>Sayın Araç Sahibi,</h5>
+
+											<p>Öncelikle, <strong>HyperShield boya koruma filmini</strong> tercih ettiğiniz için teşekkür ederiz. Aracınızı dış etkenlere karşı koruma altına alarak uzun ömürlü ve estetik bir görünüm sağlamak adına doğru bir seçim yaptınız.</p>
+
+											<p><strong>HyperShield PPF</strong>, yüksek parlaklık, dayanıklılık ve gelişmiş kendini onarma teknolojisi ile aracınızın yüzeyini çizilmelere, çevresel faktörlere ve yol koşullarına karşı korur. Günlük kullanımda oluşabilecek hafif çizikler, ısı ile aktive olan yüzey sayesinde zamanla kaybolur ve aracınız her zaman ilk günkü gibi kalır.</p>
+
+											<h5>Garanti Kapsamı</h5>
+											<p><strong>HyperShield</strong> koruma filmi, yalnızca orijinal fabrika çıkışlı boyalar için garanti kapsamındadır.</p>
+
+											<h5>İlk 7 Gün: Yerleşim Süreci</h5>
+											<p>Koruma filminin yüzeye tam olarak oturması için ilk bir hafta kritik bir süreçtir. Bu dönemde filmin yapışma süreci devam ettiğinden, bazı noktalara özellikle dikkat edilmelidir:</p>
+
+											<ul>
+												<li><strong>Yıkama ve su teması:</strong> İlk 7 gün boyunca aracı yıkamamaya özen gösterin. Aşırı su teması, filmin tam yerleşme sürecini etkileyebilir.</li>
+												<li><strong>Basınçlı su ve buhar uygulamalarından kaçının:</strong> Filmin kenarlarının tam oturması için bu süreçte yüksek basınçlı su veya buharlı temizlik yapılmamalıdır.</li>
+												<li><strong>Koruma sürecini tamamlamak için:</strong> Aracınızı sert hava koşullarına maruz bırakmamaya çalışın. Aşırı sıcak, yağmur veya çamurlu yollar, filmin yerleşme sürecini olumsuz etkileyebilir.</li>
+											</ul>
+
+											<h5>Temizlik ve Bakım Önerileri</h5>
+											<ul>
+												<li><strong>Aracınızı uzun süre kirli bırakmamaya özen gösterin:</strong> Özellikle sıcak havalarda yüzeyde biriken kirler temizlenmezse film üzerinde kalıcı lekeler oluşturabilir.</li>
+												<li><strong>Kireçli su kullanımına dikkat edin:</strong> Kireçli suyun buharlaşması sonucu oluşan lekeler film yüzeyinde iz bırakabilir. Özellikle sıcak günlerde suyun yüzeyde kurumasına izin vermemeye dikkat edin.</li>
+											</ul>
+
+											<h5>Yıkama Talimatları</h5>
+											<ul>
+												<li><strong>Basınçlı su kullanımına dikkat edin:</strong> Yüksek basınç, filmin kenarlarında kalkmalara sebep olabilir. Orta seviyede basınç kullanarak suyu doğrudan film kenarlarına yönlendirmekten kaçının.</li>
+												<li><strong>Sıcak yüzeylere yıkama yapmayın:</strong> Aracınızı güneş altında veya sıcak panellerde yıkamayın. Mümkünse gölgede yıkama yapın veya yüzeyin soğumasını bekleyin.</li>
+												<li><strong>Doğru temizlik ürünlerini kullanın:</strong> Aşındırıcı kimyasallar, asidik temizleyiciler veya sert süngerlerden kaçının. pH dengeli şampuanlar ve mikrofiber bezler en iyi sonucu verecektir.</li>
+											</ul>
+
+											<h5>Uzun Ömürlü Koruma İçin Doğru Bakım</h5>
+											<p><strong>HyperShield PPF</strong>, doğru bakım ve özenli kullanım ile aracınızı uzun yıllar ilk günkü gibi korumanıza yardımcı olur. Belirtilen talimatlara uyarak, aracınızın değerini en iyi şekilde muhafaza edebilirsiniz.</p>
+
+											<p>Herhangi bir sorunuz olması durumunda bizimle iletişime geçebilirsiniz.</p>
+
+											<p><strong>Güvenli ve keyifli sürüşler dileriz!</strong></p>
+
+											<p><strong>HyperShield</strong></p>
+										`;
+										const pdfbutton = document.querySelector(".download-pdf")
+										pdfbutton.style.display = "flex"
+										const logosm = document.querySelector(".loading-overlay")
+										setTimeout(() => {
+											logosm.style.top = "-1500px";
+										}, 3000);
+										setTimeout(() => {
+											logosm.style.display = "none";
+										}, 3500);
+									} else {
+										sonucDiv.innerText = "Bu plakaya ait garanti verisi bulunamadı.";
+									}
+									sonucDiv.style.display = "block";
+								}
+							</script>
+							
+							
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="iframefal">
+	<div id="garantiSonucdownload" class="result-container"></div>
+</div>
+
+<script>
+	async function indirmePDF() {
+			const { jsPDF } = window.jspdf || window.jspdf.jsPDF ? window.jspdf : window.jspdf.jsPDF;
+			const garantiDiv = document.getElementById('garantiSonucdownload');
+
+			// HTML'den canvas oluştur
+			html2canvas(garantiDiv, { backgroundColor: null, scale: 2 }).then(canvas => {
+				const imgData = canvas.toDataURL('image/png');
+
+				// Orijinal resim boyutlarını al
+				const imgWidth = canvas.width;
+				const imgHeight = canvas.height;
+
+				// PDF boyutu (1320x1600 px)
+				const pdfWidth = 1000;
+				const pdfHeight = 1600;
+
+				// Oranları koruyarak resmi PDF içine sığdır
+				let ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+				let newWidth = imgWidth * ratio;
+				let newHeight = imgHeight * ratio;
+				let xOffset = (pdfWidth - newWidth) / 2;
+				let yOffset = (pdfHeight - newHeight) / 2;
+
+				const pdf = new jsPDF({
+					orientation: 'portrait',
+					unit: 'px',
+					format: [pdfWidth, pdfHeight]
+				});
+
+				pdf.addImage(imgData, 'PNG', xOffset, yOffset, newWidth, newHeight);
+				pdf.save('garanti-sorgu.pdf');
+			});
+		}
+
+</script>
+						
+
+
+
+
+
+		
+
+		
+
+		<!-- Start Footer Section -->
+		<footer class="footer-section">
+			<div class="container relative">
+
+				
+
+
+				<div class="row g-5 mb-5" style="width: 100%;">
+					<div class="col-lg-4">
+						<div class="mb-4 footer-logo-wrap"><a href="index.html" class="footer-logo">
+							<img style="max-width: 200px;" src="img/logolar/hyper3.vektor.saydam.png" alt="logo">
+						</a></div>
+						<p style="color: #f5f5f5; background: #272727; border-radius: 15px; padding: 10px;" class="mb-4">
+							Hypershield, otomotiv sektörü için geliştirilmiş yüksek kaliteli boya koruma filmleri (PPF), cam filmi ve 9H ekran
+							koruyucu gibi ürünlerle aracınızın her yönüyle korunmasını sağlar. Yenilikçi teknolojilerle üretilen ürünlerimiz, uzun
+							ömürlü dayanıklılık ve üstün koruma sunar. Sürüş keyfinizi artırarak, aracınızı dış etkenlerden korur ve görünümünü uzun
+							süre boyunca ilk günkü gibi tutmanıza yardımcı olur.
+						</p>
+
+						<ul class="list-unstyled custom-social">
+							
+							<li><a href="https://instagram.com/hypershieldppf">
+								<img width="48" height="48" src="https://img.icons8.com/fluency/148/instagram-new.png" alt="instagram-new" />
+								hypershieldppf
+							</a></li>
+							<li><a href="mailto:info@hypershieldppf.com">
+								<img width="48" height="48" src="https://img.icons8.com/fluency/148/apple-mail.png" alt="apple-mail" />
+								info@hypershieldppf.com
+							</a></li>
+							
+						</ul>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="hakkimizda.html">Hakkımızda</a></li>
+									<li><a href="urunlerimiz.html">Ürünlerimiz</a></li>
+									<li><a href="iletisim.html">İletişim</a></li>
+<li><a href="gizlilik-politikasi.html">Gizlilik Politikası</a></li>
+<li><a href="garanti-politikasi.html">Garanti Politikası</a></li>
+<li><a href="aydinlatma-metni.html">Aydınlatma Metni</a></li>
+								</ul>
+							</div>
+
+							
+
+							
+
+							<div class="col-12 col-sm-12 col-md-8">
+								<iframe style="border-radius: 15px; border: 2px solid #f9bf29;"
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.417188784226!2d28.848622476424577!3d40.99424112028866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa4a9aa26b51b%3A0xe042cb0bb9248b89!2zxZ5pcmluZXZsZXIsIEthcmFvxJ9sYW5vxJ9sdSBDZC4gTm86MTQsIDM0MTg4IEJhaMOnZWxpZXZsZXIvxLBzdGFuYnVs!5e0!3m2!1sen!2str!4v1739264351300!5m2!1sen!2str"
+									width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+									referrerpolicy="no-referrer-when-downgrade"></iframe>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="border-top copyright">
+					<div class="row pt-4">
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved.</p>
+						</div>
+
+						
+
+					</div>
+				</div>
+
+			</div>
+		</footer>
+		<!-- End Footer Section -->	
+
+
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/tiny-slider.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js.js"></script>
+	<div style="opacity: 1; display:flex; align-items:center; justify-content:center; width:100%; margin-top:0px">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        /* Daha spesifik CSS ile Poppins fontunu zorla uygulama */
+        a, span, div {
+            font-family: 'Poppins', sans-serif !important;
+        }
+    </style>
+    <a href="https://nowifymedia.com" style="display:flex; align-items: center; gap:5px; color:#353535; text-decoration:none; font-size:13px; justify-content:center; width:100%; background:#111111; color:#e3e5e999; padding:10px;">
+        <span>Created by</span>
+        <img width="20px" height="auto" src="https://raw.githubusercontent.com/uguralpyildiz/enjekt-rpapilus/refs/heads/main/logo.png" alt="NowifyMedia">
+        <div>
+           <span style="font-style: italic"><span style="font-weight:600">Nowify</span>Media.com</span> 
+        </div>
+    </a>
+</div>
+	</body>
+
+</html>
