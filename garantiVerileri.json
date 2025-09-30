@@ -18,25 +18,5 @@
       "islem": "Komple kaplama",
       "urun_adi": "TPU -Matte"
     }
-  },
-  {
-    "plaka": "123",
-    "seri_numarasi": "6a5sd1f6as1d",
-    "arac_model_bilgisi": "ford",
-    "garanti_tarihi": "16/25/2525",
-    "garanti_bitis_tarihi": "",
-    "aktiflik": "asdfasdf",
-    "musteri_bilgileri": {
-      "plaka": "34abc123",
-      "ad_soyad": "aliyilmaz",
-      "arac_marka_model": "ford"
-    },
-    "yapilan_islemler": {
-      "garanti_baslangic_tarihi": "25252525",
-      "garanti_bitis_tarihi": "",
-      "dayaniklilik_suresi": "132456yil",
-      "islem": "komplekaplama",
-      "urun_adi": "hypershield"
-    }
   }
 ]
