@@ -18,5 +18,25 @@
       "islem": "Komple kaplama",
       "urun_adi": "TPU -Matte"
     }
+  },
+  {
+    "plaka": "34nvh338",
+    "seri_numarasi": "",
+    "arac_model_bilgisi": "TESLA MODEL Y",
+    "garanti_tarihi": "01/06/2025",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "DEVAM EDİYOR",
+    "musteri_bilgileri": {
+      "plaka": "34NVH338",
+      "ad_soyad": "KEVSER KÜREŞ",
+      "arac_marka_model": "TESLA MODEL Y"
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "01/06/2025",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "5 YIL",
+      "islem": "KOMPLE KAPLAMA",
+      "urun_adi": "TPU-MATTE"
+    }
   }
 ]
