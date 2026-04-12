@@ -143,252 +143,565 @@
 	<!-- End Header/Navigation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-		<div class="hero" style="padding-bottom: 250px !important;">
-			<div class="container">
-				<!-- Giriş Formu -->
-				<div class="login-form">
-					<h2>Bayi Girişi</h2>
-					<div class="log-form">
-						<label for="username">Kullanıcı Adı:</label>
-						<input type="text" id="username" required>
-						<br><br>
-						<label for="password">Şifre:</label>
-						<input type="password" id="password" required>
-						<br><br>
-						<button onclick="login()">Giriş Yap</button>
-						<p id="login-error" style="color: red; display: none;">Hatalı kullanıcı adı veya şifre!</p>
-					</div>
-				</div>
-			
-				<!-- Garanti Uygulama Ekranı -->
-				<div class="garanti-ekrani">
-					<div class="uygulayici">
-						<h2>Garanti Uygulama Ekranı</h2>
-						<form id="dataForm"></form>
-						<button onclick="addNewCar()">Yeni Araç Ekle</button>
-						<button class="yupdate" onclick="updateJson()">Güncelle</button>
-						<p id="status"></p>
-					</div>
+
+
+
+<style>
+	/* --- YENİ YÖNETİM PANELİ TASARIMI --- */
+	.admin-dashboard {
+		text-align: left;
+		 font-family: 'Poppins', sans-serif !important;
+	}
+
+	.admin-dashboard h2 {
+		font-weight: 700;
+		margin-bottom: 0;
+		color: #000;
+	}
+
+	/* Arama ve Buton Alanı */
+	.dashboard-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 25px;
+		flex-wrap: wrap;
+		gap: 15px;
+	}
+
+	.dashboard-controls {
+		display: flex;
+		gap: 15px;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.search-input {
+		background: #fff;
+		border: 2px solid #333;
+		color: #000;
+		padding: 12px 15px;
+		 font-family: 'Poppins', sans-serif !important;
+		font-size: 14px;
+		width: 250px;
+		transition: border-color 0.2s;
+	}
+
+	.search-input:focus {
+		outline: none;
+		border-color: #5c4b00;
+	}
+
+	/* Plaka Grid Sistemi */
+	.plate-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 15px;
+		margin-top: 20px;
+	}
+
+	.plate-card {
+		background:linear-gradient(to right, #2e2e2e, #000) ;
+		box-shadow: 0 0 15px #00000020;
+		padding: 15px 20px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		text-align: left;
+		position: relative;
+		border: 2px solid #000;
+	}
+
+	.plate-card:hover {
+		border-color: #0066ff;
+		
+	}
+
+	.plate-name {
+		font-size: 0.75rem;
+		color: #f5f5f5;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		display: block;
+		margin-bottom: 4px;
+		font-weight: 600;
+	}
+
+	.plate-number {
+		 font-family: 'Poppins', sans-serif !important;
+		font-size: 1.3rem;
+		font-weight: 700;
+		color: #ffd000;
+		border: 1px solid #ffd00050;
+		text-align: center;
+		padding: 5px;
+		display: block;
+		margin-bottom: 5px;
+	}
+
+	.plate-model {
+		font-size: 0.8rem;
+		color: #fff;
+		display: block;
+	}
+
+	/* Butonlar */
+	.btn-brutal {
+		background-color: #ffd000;
+		box-shadow: 0 0 15px #00000020;
+		color: #000;
+		border: none;
+		padding: 12px 24px;
+		 font-family: 'Poppins', sans-serif !important;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.2s;
+		text-transform: uppercase;
+		font-size: 14px;
+	}
+
+	.btn-brutal:hover {
+		background-color: #fff;
+		color: #000;
+	}
+
+	.btn-brutal.danger {
+		background-color: transparent;
+		color: #ff4c4c;
+		border: 1px solid #ff4c4c;
+	}
+
+	.btn-brutal.danger:hover {
+		background-color: #ff4c4c;
+		color: #fff;
+	}
+
+	/* Modal Box */
+	.custom-modal-overlay {
+		display: none;
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.85);
+		z-index: 9999;
+		justify-content: center;
+		align-items: flex-start;
+		padding: 50px 20px;
+		overflow-y: auto;
+		backdrop-filter: blur(5px);
+	}
+
+	.custom-modal {
+		background: #0a0a0a;
+		border: 1px solid #333;
+		width: 100%;
+		max-width: 700px;
+		padding: 40px;
+		text-align: left;
+		position: relative;
+	}
+
+	.modal-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid #222;
+		padding-bottom: 20px;
+		margin-bottom: 30px;
+	}
+
+	.modal-header h3 {
+		margin: 0;
+		color: #fff;
+		 font-family: 'Poppins', sans-serif !important;
+		font-weight: 700;
+	}
+
+	.close-modal {
+		background: none;
+		border: none;
+		color: #888;
+		font-size: 24px;
+		cursor: pointer;
+		transition: color 0.2s;
+	}
+
+	.close-modal:hover {
+		color: #fff;
+	}
+
+	/* Form Elemanları */
+	.form-group {
+		margin-bottom: 20px;
+	}
+
+	.custom-modal label {
+		display: block;
+		font-size: 11px;
+		text-transform: uppercase;
+		color: #888;
+		margin-bottom: 8px;
+		letter-spacing: 1px;
+	}
+
+	.custom-modal input {
+		width: 100%;
+		background: #111;
+		border: 1px solid #333;
+		color: #fff;
+		padding: 12px 15px;
+		 font-family: 'Poppins', sans-serif !important;
+		font-size: 14px;
+		transition: border-color 0.2s;
+	}
+
+	.custom-modal input:focus {
+		outline: none;
+		border-color: #ffd000;
+	}
+
+	.section-title {
+		color: #ffd000;
+		font-size: 14px;
+		border-bottom: 1px solid #333;
+		padding-bottom: 10px;
+		margin: 30px 0 20px 0;
+		text-transform: uppercase;
+		 font-family: 'Poppins', sans-serif !important;
+		font-weight: 700;
+	}
+
+	.modal-footer-actions {
+		display: flex;
+		justify-content: flex-end;
+		gap: 15px;
+		margin-top: 40px;
+		padding-top: 20px;
+		border-top: 1px solid #222;
+	}
+</style>
+
+<div class="hero" style="padding-bottom: 250px !important;">
+	<div class="container">
+		<div class="login-form">
+			<h2>Bayi Girişi</h2>
+			<div class="log-form" style="text-align: left;">
+				<label for="username">Kullanıcı Adı:</label>
+				<input type="text" id="username" required>
+				<br><br>
+				<label for="password">Şifre:</label>
+				<input type="password" id="password" required>
+				<br><br>
+				<button onclick="login()">Giriş Yap</button>
+				<p id="login-error" style="color: red; display: none;">Hatalı kullanıcı adı veya şifre!</p>
+			</div>
+		</div>
+
+		<div class="garanti-ekrani admin-dashboard" style="display: none;">
+			<div class="dashboard-header">
+				<h2>Garanti Kayıtları</h2>
+				<div class="dashboard-controls">
+					<input type="text" id="searchInput" class="search-input" placeholder="Plaka veya İsim Ara..."
+						oninput="renderDashboard(this.value)">
+					<button class="btn-brutal" onclick="openModal(-1)">Yeni Araç Ekle</button>
 				</div>
 			</div>
-			
-			<script>
-				
-				const username = "admin";
-				const password = "hkS2673308";
 
-				// Giriş fonksiyonu
-				function login() {
-					const enteredUsername = document.getElementById('username').value;
-					const enteredPassword = document.getElementById('password').value;
+			<p id="status" style="display:none; color:#000; margin-bottom: 15px; font-weight: 600;"></p>
 
-					// Kullanıcı adı ve şifreyi kontrol et
-					if (enteredUsername === username && enteredPassword === password) {
-						// Giriş başarılı, garanti ekranını göster
-						document.querySelector('.login-form').style.display = "none";
-						document.querySelector('.garanti-ekrani').style.display = "block";
-						loadJson(); // JSON verisini yükle
-					} else {
-						// Hatalı giriş, uyarıyı göster
-						document.getElementById('login-error').style.display = "block";
-					}
-				}
-
-				// Burada JSON verisi yükleme ve garanti ekranını oluşturma işlemleri yapılacak
-				const githubUsername = "uguralpyildiz";
-				const repoName = "hyperppf.com";
-				const filePath = "garantiVerileri.json";
-				// Binary string provided
-					const binaryString = "01100111 01101001 01110100 01101000 01110101 01100010 01011111 01110000 01100001 01110100 01011111 00110001 00110001 01000001 01010011 01010010 01001100 01010101 01011000 01011001 00110000 00110110 01111010 01101011 01111010 01001100 00110111 01010010 01010101 01101000 01010000 01001011 00110001 01011111 01111001 01000010 01001101 00111001 01111000 01001000 01010001 01000110 01010111 01111010 01100010 01100100 01001000 01111000 01000111 00110100 01110000 01000100 01001010 01101010 01001100 01101001 01110011 01001110 01010011 01011010 01001000 00110010 01010011 00110010 01001001 01011001 00110011 00110111 01011010 01101111 01110011 01000101 00110101 01101100 01000111 01010111 01111010 01010011 00110011 01001001 01001010 01000100 01010111 01000101 01000100 01100110 00111000 01110001 01001101 01010111 00110000 01010101 01010001";
-
-					// Step 1: Clean the binary string (remove spaces)
-					const cleanedBinaryString = binaryString.replace(/\s+/g, '');
-
-					// Step 2: Break the cleaned binary string into 8-bit chunks
-					let binaryArray = [];
-					for (let i = 0; i < cleanedBinaryString.length; i += 8) {
-						binaryArray.push(cleanedBinaryString.slice(i, i + 8));
-					}
-
-					// Step 3: Convert each 8-bit chunk into an ASCII character
-					const token = binaryArray.map(binary => String.fromCharCode(parseInt(binary, 2))).join('');
-
-					
-
-					
-				const apiUrl = `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`;
-
-				let content = [];
-
-				async function loadJson() {
-					try {
-						let response = await fetch(apiUrl, {
-							headers: { Authorization: `token ${token}` }
-						});
-
-						let data = await response.json();
-						content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
-
-						renderForm();
-					} catch (error) {
-						console.error(error);
-						document.getElementById("status").innerText = "Veri yüklenemedi!";
-					}
-				}
-
-				function renderForm() {
-					const form = document.getElementById("dataForm");
-					form.innerHTML = "";
-
-					content.forEach((item, index) => {
-						form.innerHTML += `
-			                <div class="garantidiv">
-			                    <h3>Garanti ${index + 1} <button onclick="deleteCar(${index})">Sil</button></h3>
-			                    <label>Plaka:</label>
-			                    <input type="text" id="plaka-${index}" value="${item.plaka}"><br>
-			
-			                    <label>Seri No:</label>
-			                    <input type="text" id="seri-${index}" value="${item.seri_numarasi}"><br>
-			
-			                    <label>Araç Model:</label>
-			                    <input type="text" id="model-${index}" value="${item.arac_model_bilgisi}"><br>
-			
-			                    <label>Uygulama Yapılan Tarih:</label>
-			                    <input type="text" id="garantiBaslangic-${index}" value="${item.garanti_tarihi}"><br>
-								
-			                   
-			
-			                    <label>Aktiflik:</label>
-			                    <input type="text" id="aktiflik-${index}" value="${item.aktiflik}"><br>
-			
-			                    <h4>Müşteri Bilgileri</h4>
-			                    <label>Ad Soyad:</label>
-			                    <input type="text" id="adSoyad-${index}" value="${item.musteri_bilgileri.ad_soyad}"><br>
-			
-			                    <label>Müşteri Plaka:</label>
-			                    <input type="text" id="musteriPlaka-${index}" value="${item.musteri_bilgileri.plaka}"><br>
-			
-			                    <label>Müşteri Araç Model:</label>
-			                    <input type="text" id="musteriModel-${index}" value="${item.musteri_bilgileri.arac_marka_model}"><br>
-			
-			                    <h4>Yapılan İşlemler</h4>
-			                    <label>İşlem:</label>
-			                    <input type="text" id="islem-${index}" value="${item.yapilan_islemler.islem}"><br>
-			
-			                    <label>Ürün Adı:</label>
-			                    <input type="text" id="urunAdi-${index}" value="${item.yapilan_islemler.urun_adi}"><br>
-			
-			                    <label>Dayanıklılık Süresi:</label>
-			                    <input type="text" id="dayaniklilik-${index}" value="${item.yapilan_islemler.dayaniklilik_suresi}"><br>
-			
-			                    <label>Uygulama Yapılan Tarih:</label>
-			                    <input type="text" id="islemGarantiBaslangic-${index}" value="${item.yapilan_islemler.garanti_baslangic_tarihi}"><br>
-			
-			                    
-			                </div>
-			            `;
-					});
-				}
-
-				function addNewCar() {
-					const yupdate = document.querySelector(".yupdate")
-					yupdate.style.display = "inline-block"
-					content.push({
-						plaka: "",
-						seri_numarasi: "",
-						arac_model_bilgisi: "",
-						garanti_tarihi: "",
-						garanti_bitis_tarihi: "",
-						aktiflik: "",
-						musteri_bilgileri: {
-							plaka: "",
-							ad_soyad: "",
-							arac_marka_model: ""
-						},
-						yapilan_islemler: {
-							garanti_baslangic_tarihi: "",
-							garanti_bitis_tarihi: "",
-							dayaniklilik_suresi: "",
-							islem: "",
-							urun_adi: ""
-						}
-					});
-
-					renderForm();
-				}
-
-				function deleteCar(index) {
-					const yupdate = document.querySelector(".yupdate")
-					yupdate.style.display = "inline-block"
-					content.splice(index, 1);
-					renderForm();
-				}
-
-				async function updateJson() {
-					try {
-						content.forEach((item, index) => {
-							item.plaka = document.getElementById(`plaka-${index}`).value;
-							item.seri_numarasi = document.getElementById(`seri-${index}`).value;
-							item.arac_model_bilgisi = document.getElementById(`model-${index}`).value;
-							item.garanti_tarihi = document.getElementById(`garantiBaslangic-${index}`).value;
-							
-							item.aktiflik = document.getElementById(`aktiflik-${index}`).value;
-
-							item.musteri_bilgileri.ad_soyad = document.getElementById(`adSoyad-${index}`).value;
-							item.musteri_bilgileri.plaka = document.getElementById(`musteriPlaka-${index}`).value;
-							item.musteri_bilgileri.arac_marka_model = document.getElementById(`musteriModel-${index}`).value;
-
-							item.yapilan_islemler.islem = document.getElementById(`islem-${index}`).value;
-							item.yapilan_islemler.urun_adi = document.getElementById(`urunAdi-${index}`).value;
-							item.yapilan_islemler.dayaniklilik_suresi = document.getElementById(`dayaniklilik-${index}`).value;
-							item.yapilan_islemler.garanti_baslangic_tarihi = document.getElementById(`islemGarantiBaslangic-${index}`).value;
-							
-						});
-
-						let fileResponse = await fetch(apiUrl, { headers: { Authorization: `token ${token}` } });
-						let fileData = await fileResponse.json();
-						const sha = fileData.sha;
-
-						const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
-
-						let updateResponse = await fetch(apiUrl, {
-							method: "PUT",
-							headers: {
-								Authorization: `token ${token}`,
-								"Content-Type": "application/json"
-							},
-							body: JSON.stringify({
-								message: "Garanti verileri güncellendi",
-								content: updatedContent,
-								sha: sha
-							})
-						});
-
-						if (updateResponse.ok) {
-							document.getElementById("status").innerText = "Başarıyla güncellendi!";
-						} else {
-							document.getElementById("status").innerText = "Güncelleme hatası!";
-						}
-
-						setTimeout(() => {
-							document.getElementById("status").style.display = "none";
-						}, 3000);
-
-						document.getElementById("status").style.display = "flex";
-
-					} catch (error) {
-						console.error(error);
-						document.getElementById("status").innerText = "Hata oluştu!";
-						setTimeout(() => {
-							document.getElementById("status").style.display = "none";
-						}, 3000);
-
-						document.getElementById("status").style.display = "flex";
-					}
-				}
-
-			</script>
+			<div id="plateContainer" class="plate-grid"></div>
+		</div>
+	</div>
 </div>
+
+<div id="garantiModal" class="custom-modal-overlay">
+	<div class="custom-modal">
+		<div class="modal-header">
+			<h3 id="modalTitle">Araç Detayı</h3>
+			<button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+		</div>
+
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<label>Plaka</label>
+					<input type="text" id="m_plaka">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Araç Model Bilgisi</label>
+					<input type="text" id="m_model">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Seri No</label>
+					<input type="text" id="m_seri">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Garanti Başlangıç</label>
+					<input type="text" id="m_garantiBaslangic">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Aktiflik Durumu</label>
+					<input type="text" id="m_aktiflik">
+				</div>
+			</div>
+
+			<div class="section-title">Müşteri Bilgileri</div>
+			<div class="row">
+				<div class="col-md-12 form-group">
+					<label>Ad Soyad</label>
+					<input type="text" id="m_adSoyad">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Müşteri Plaka</label>
+					<input type="text" id="m_musteriPlaka">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Müşteri Araç Model</label>
+					<input type="text" id="m_musteriModel">
+				</div>
+			</div>
+
+			<div class="section-title">Yapılan İşlemler</div>
+			<div class="row">
+				<div class="col-md-6 form-group">
+					<label>İşlem Tipi</label>
+					<input type="text" id="m_islem">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Ürün Adı</label>
+					<input type="text" id="m_urunAdi">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>Dayanıklılık Süresi</label>
+					<input type="text" id="m_dayaniklilik">
+				</div>
+				<div class="col-md-6 form-group">
+					<label>İşlem Tarihi</label>
+					<input type="text" id="m_islemTarihi">
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-footer-actions">
+			<button id="btnDelete" class="btn-brutal danger" onclick="deleteCurrentCar()">Sil</button>
+			<button class="btn-brutal" onclick="saveModalData()">Kaydet ve Güncelle</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	const username = "admin";
+	const password = "hkS2673308";
+
+	const githubUsername = "uguralpyildiz";
+	const repoName = "hyperppf.com";
+	const filePath = "garantiVerileri.json";
+
+	// GitHub Token Decode
+	const binaryString = "01100111 01101001 01110100 01101000 01110101 01100010 01011111 01110000 01100001 01110100 01011111 00110001 00110001 01000001 01010011 01010010 01001100 01010101 01011000 01011001 00110000 00110110 01111010 01101011 01111010 01001100 00110111 01010010 01010101 01101000 01010000 01001011 00110001 01011111 01111001 01000010 01001101 00111001 01111000 01001000 01010001 01000110 01010111 01111010 01100010 01100100 01001000 01111000 01000111 00110100 01110000 01000100 01001010 01101010 01001100 01101001 01110011 01001110 01010011 01011010 01001000 00110010 01010011 00110010 01001001 01011001 00110011 00110111 01011010 01101111 01110011 01000101 00110101 01101100 01000111 01010111 01111010 01010011 00110011 01001001 01001010 01000100 01010111 01000101 01000100 01100110 00111000 01110001 01001101 01010111 00110000 01010101 01010001";
+	const cleanedBinaryString = binaryString.replace(/\s+/g, '');
+	let binaryArray = [];
+	for (let i = 0; i < cleanedBinaryString.length; i += 8) {
+		binaryArray.push(cleanedBinaryString.slice(i, i + 8));
+	}
+	const token = binaryArray.map(binary => String.fromCharCode(parseInt(binary, 2))).join('');
+
+	const apiUrl = `https://api.github.com/repos/${githubUsername}/${repoName}/contents/${filePath}`;
+
+	let content = [];
+	let currentEditIndex = -1;
+
+	function login() {
+		const enteredUsername = document.getElementById('username').value;
+		const enteredPassword = document.getElementById('password').value;
+
+		if (enteredUsername === username && enteredPassword === password) {
+			document.querySelector('.login-form').style.display = "none";
+			document.querySelector('.garanti-ekrani').style.display = "block";
+			loadJson();
+		} else {
+			document.getElementById('login-error').style.display = "block";
+		}
+	}
+
+	async function loadJson() {
+		try {
+			let response = await fetch(apiUrl, {
+				headers: { Authorization: `token ${token}` }
+			});
+			let data = await response.json();
+			content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+			renderDashboard();
+		} catch (error) {
+			console.error(error);
+			showStatus("Veri yüklenemedi!");
+		}
+	}
+
+	// Arama filtreleme desteği eklendi
+	function renderDashboard(filterText = "") {
+		const container = document.getElementById("plateContainer");
+		container.innerHTML = "";
+		const lowerFilter = filterText.toLowerCase().trim();
+
+		content.forEach((item, index) => {
+			const plate = item.plaka || "İsimsiz Plaka";
+			const model = item.arac_model_bilgisi || "Model Belirtilmemiş";
+			const adSoyad = item.musteri_bilgileri?.ad_soyad || "İsim Yok";
+
+			// Eğer filtre varsa ve ne plaka ne de ad soyad eşleşmiyorsa, bu kartı geç (atla)
+			if (lowerFilter &&
+				!plate.toLowerCase().includes(lowerFilter) &&
+				!adSoyad.toLowerCase().includes(lowerFilter)) {
+				return;
+			}
+
+			container.innerHTML += `
+                <div class="plate-card" onclick="openModal(${index})">
+                    <span class="plate-name">${adSoyad}</span>
+                    <span class="plate-number">${plate}</span>
+                    <span class="plate-model">${model}</span>
+                </div>
+            `;
+		});
+	}
+
+	function openModal(index) {
+		currentEditIndex = index;
+		const modal = document.getElementById('garantiModal');
+		const btnDelete = document.getElementById('btnDelete');
+		const modalTitle = document.getElementById('modalTitle');
+
+		if (index === -1) {
+			modalTitle.innerText = "Yeni Araç Ekle";
+			btnDelete.style.display = "none";
+			clearModalInputs();
+		} else {
+			modalTitle.innerText = "Araç Detayı Güncelle";
+			btnDelete.style.display = "block";
+			const item = content[index];
+
+			document.getElementById("m_plaka").value = item.plaka || "";
+			document.getElementById("m_seri").value = item.seri_numarasi || "";
+			document.getElementById("m_model").value = item.arac_model_bilgisi || "";
+			document.getElementById("m_garantiBaslangic").value = item.garanti_tarihi || "";
+			document.getElementById("m_aktiflik").value = item.aktiflik || "";
+
+			document.getElementById("m_adSoyad").value = item.musteri_bilgileri?.ad_soyad || "";
+			document.getElementById("m_musteriPlaka").value = item.musteri_bilgileri?.plaka || "";
+			document.getElementById("m_musteriModel").value = item.musteri_bilgileri?.arac_marka_model || "";
+
+			document.getElementById("m_islem").value = item.yapilan_islemler?.islem || "";
+			document.getElementById("m_urunAdi").value = item.yapilan_islemler?.urun_adi || "";
+			document.getElementById("m_dayaniklilik").value = item.yapilan_islemler?.dayaniklilik_suresi || "";
+			document.getElementById("m_islemTarihi").value = item.yapilan_islemler?.garanti_baslangic_tarihi || "";
+		}
+
+		modal.style.display = "flex";
+	}
+
+	function closeModal() {
+		document.getElementById('garantiModal').style.display = "none";
+	}
+
+	function clearModalInputs() {
+		const inputs = document.querySelectorAll('.custom-modal input');
+		inputs.forEach(input => input.value = "");
+	}
+
+	function saveModalData() {
+		const newData = {
+			plaka: document.getElementById("m_plaka").value,
+			seri_numarasi: document.getElementById("m_seri").value,
+			arac_model_bilgisi: document.getElementById("m_model").value,
+			garanti_tarihi: document.getElementById("m_garantiBaslangic").value,
+			garanti_bitis_tarihi: "",
+			aktiflik: document.getElementById("m_aktiflik").value,
+			musteri_bilgileri: {
+				plaka: document.getElementById("m_musteriPlaka").value,
+				ad_soyad: document.getElementById("m_adSoyad").value,
+				arac_marka_model: document.getElementById("m_musteriModel").value
+			},
+			yapilan_islemler: {
+				garanti_baslangic_tarihi: document.getElementById("m_islemTarihi").value,
+				garanti_bitis_tarihi: "",
+				dayaniklilik_suresi: document.getElementById("m_dayaniklilik").value,
+				islem: document.getElementById("m_islem").value,
+				urun_adi: document.getElementById("m_urunAdi").value
+			}
+		};
+
+		if (currentEditIndex === -1) {
+			content.push(newData);
+		} else {
+			content[currentEditIndex] = newData;
+		}
+
+		closeModal();
+
+		// Arama kutusunu temizle ve ekranı tam liste olarak yenile
+		document.getElementById("searchInput").value = "";
+		renderDashboard();
+
+		updateJson();
+	}
+
+	function deleteCurrentCar() {
+		if (currentEditIndex !== -1) {
+			const isConfirmed = confirm("Bu aracı silmek istediğinize emin misiniz?");
+			if (isConfirmed) {
+				content.splice(currentEditIndex, 1);
+				closeModal();
+
+				// Arama kutusunu temizle ve ekranı tam liste olarak yenile
+				document.getElementById("searchInput").value = "";
+				renderDashboard();
+
+				updateJson();
+			}
+		}
+	}
+
+	function showStatus(text) {
+		const statusEl = document.getElementById("status");
+		statusEl.innerText = text;
+		statusEl.style.display = "block";
+		setTimeout(() => {
+			statusEl.style.display = "none";
+		}, 8000);
+	}
+
+	async function updateJson() {
+		showStatus("Sisteme kaydediliyor. Lütfen bekleyin...");
+		try {
+			let fileResponse = await fetch(apiUrl, { headers: { Authorization: `token ${token}` } });
+			let fileData = await fileResponse.json();
+			const sha = fileData.sha;
+
+			const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+
+			let updateResponse = await fetch(apiUrl, {
+				method: "PUT",
+				headers: {
+					Authorization: `token ${token}`,
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					message: "Garanti verileri sistem üzerinden güncellendi",
+					content: updatedContent,
+					sha: sha
+				})
+			});
+
+			if (updateResponse.ok) {
+				showStatus("Başarıyla güncellendi!");
+			} else {
+				showStatus("Güncelleme hatası!");
+			}
+		} catch (error) {
+			console.error(error);
+			showStatus("Hata oluştu!");
+		}
+	}
+</script>
 
 						
 
