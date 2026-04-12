@@ -1,10 +1,10 @@
 [
   {
     "plaka": "34MLR804",
-    "seri_numarasi": "",
+    "seri_numarasi": "YOK",
     "arac_model_bilgisi": "TESLA MODEL Y",
     "garanti_tarihi": "19/11/2024",
-    "garanti_bitis_tarihi": "18/11/2029",
+    "garanti_bitis_tarihi": "",
     "aktiflik": "Devam ediyor",
     "musteri_bilgileri": {
       "plaka": "34MLR804",
@@ -13,7 +13,7 @@
     },
     "yapilan_islemler": {
       "garanti_baslangic_tarihi": "19/11/2024",
-      "garanti_bitis_tarihi": "18/11/2029",
+      "garanti_bitis_tarihi": "",
       "dayaniklilik_suresi": "5 Yıl",
       "islem": "Komple kaplama",
       "urun_adi": "TPU -Matte"
