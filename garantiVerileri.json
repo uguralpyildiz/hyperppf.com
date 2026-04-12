@@ -38,25 +38,5 @@
       "islem": "KOMPLE KAPLAMA",
       "urun_adi": "TPU-MATTE"
     }
-  },
-  {
-    "plaka": "16ABC123",
-    "seri_numarasi": "YOK",
-    "arac_model_bilgisi": "TEST ARAÇ",
-    "garanti_tarihi": "19/11/2024",
-    "garanti_bitis_tarihi": "",
-    "aktiflik": "Devam ediyor",
-    "musteri_bilgileri": {
-      "plaka": "16ABC123",
-      "ad_soyad": "uğur alp yıldız",
-      "arac_marka_model": "Tesla Model S"
-    },
-    "yapilan_islemler": {
-      "garanti_baslangic_tarihi": "01/06/2025",
-      "garanti_bitis_tarihi": "",
-      "dayaniklilik_suresi": "5 YIL",
-      "islem": "KOMPLE KAPLAMA",
-      "urun_adi": "TPU -Matte"
-    }
   }
 ]
