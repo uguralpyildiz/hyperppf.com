@@ -38,5 +38,25 @@
       "islem": "KOMPLE KAPLAMA",
       "urun_adi": "TPU-MATTE"
     }
+  },
+  {
+    "plaka": "34ERS622",
+    "seri_numarasi": "",
+    "arac_model_bilgisi": "Tesla",
+    "garanti_tarihi": "018/04/2026",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "Devam ediyor",
+    "musteri_bilgileri": {
+      "plaka": "34ers622",
+      "ad_soyad": "EMİR DURSUN",
+      "arac_marka_model": "Tesla"
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "18/04/2026",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "5 yıl",
+      "islem": "Komple kaplama",
+      "urun_adi": "Hyper 190"
+    }
   }
 ]
