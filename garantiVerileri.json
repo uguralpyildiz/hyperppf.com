@@ -78,5 +78,25 @@
       "islem": "KOMPLE KAPLAMA",
       "urun_adi": "TPU GLOSSY BLACK"
     }
+  },
+  {
+    "plaka": "41BDU427",
+    "seri_numarasi": "230 MİKRON",
+    "arac_model_bilgisi": "TOYOTA CHR SPORT 2026",
+    "garanti_tarihi": "07/09/2026",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "DEVAM EDİYOR ",
+    "musteri_bilgileri": {
+      "plaka": "41BDU427",
+      "ad_soyad": "MUHLİSE ÖZGÜLER",
+      "arac_marka_model": "TOYOTA CHR SPORT 2026"
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "07/09/2026",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "10",
+      "islem": "PPF ARAÇ KAPLAMA",
+      "urun_adi": "HYPER 230 MİKRON"
+    }
   }
 ]
