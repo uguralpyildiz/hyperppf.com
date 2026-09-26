@@ -98,5 +98,25 @@
       "islem": "PPF ARAÇ KAPLAMA",
       "urun_adi": "HYPER 230 MİKRON"
     }
+  },
+  {
+    "plaka": "34RIT893",
+    "seri_numarasi": "",
+    "arac_model_bilgisi": "Rıfter Pegout",
+    "garanti_tarihi": "26/09/2026",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "Devam ediyor",
+    "musteri_bilgileri": {
+      "plaka": "34RIT893",
+      "ad_soyad": "ERDAL KARABULUT",
+      "arac_marka_model": "Rıfter Pegout"
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "26/09/2026",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "7",
+      "islem": "Komple kaplama",
+      "urun_adi": "Hyper Shirld M150"
+    }
   }
 ]
