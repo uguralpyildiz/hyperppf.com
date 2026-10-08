@@ -118,5 +118,25 @@
       "islem": "Komple kaplama",
       "urun_adi": "Hyper Shirld M150"
     }
+  },
+  {
+    "plaka": "34RJU118",
+    "seri_numarasi": "",
+    "arac_model_bilgisi": "C3 CİTROEN",
+    "garanti_tarihi": "08/10/2026",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "DEVAM EDİYOR",
+    "musteri_bilgileri": {
+      "plaka": "34RJU118",
+      "ad_soyad": "ÖZKAN AYGÜN",
+      "arac_marka_model": "C3 CİTROEN"
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "08/10/2026",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "7 YIL",
+      "islem": "KOMPLE KAPLAMA",
+      "urun_adi": "HYPER M150"
+    }
   }
 ]
