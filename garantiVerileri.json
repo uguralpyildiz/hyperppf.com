@@ -138,5 +138,25 @@
       "islem": "KOMPLE KAPLAMA",
       "urun_adi": "HYPER M150"
     }
+  },
+  {
+    "plaka": "34NIE610",
+    "seri_numarasi": "",
+    "arac_model_bilgisi": "HUNDAİ İONİQ 6 ",
+    "garanti_tarihi": "17/09/2026",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "DEVAM EDİYOR",
+    "musteri_bilgileri": {
+      "plaka": "34NIE610",
+      "ad_soyad": "NECMETTİN EKMEKCİ",
+      "arac_marka_model": "HUNDAİ İONİQ 6 "
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "17/09/26",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "7 YIL",
+      "islem": "KOMPLE KAPLAMA",
+      "urun_adi": "HYPER 210"
+    }
   }
 ]
