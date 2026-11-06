@@ -178,5 +178,25 @@
       "islem": "KOMPLE KAPLAMA",
       "urun_adi": "HYPER 210"
     }
+  },
+  {
+    "plaka": "41BFP236",
+    "seri_numarasi": "",
+    "arac_model_bilgisi": "TOGG 10X V2",
+    "garanti_tarihi": "",
+    "garanti_bitis_tarihi": "",
+    "aktiflik": "",
+    "musteri_bilgileri": {
+      "plaka": "41BFP236",
+      "ad_soyad": "MUHAMMET SALİH ÇEĞİL",
+      "arac_marka_model": "TOGG 10X V2"
+    },
+    "yapilan_islemler": {
+      "garanti_baslangic_tarihi": "20/07/26",
+      "garanti_bitis_tarihi": "",
+      "dayaniklilik_suresi": "7 YIL",
+      "islem": "KOMPLE KAPLAMA",
+      "urun_adi": "HYPER 210"
+    }
   }
 ]
